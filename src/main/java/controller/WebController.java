@@ -3,9 +3,11 @@ package controller;
 import javax.validation.Valid;
 
 import Repository.userRepository;
+import model.LoginForm;
 import model.PersonForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Controller
 public class WebController implements WebMvcConfigurer {
 
+
     @Autowired
     Repository.userRepository userRepository;
 
@@ -25,9 +28,24 @@ public class WebController implements WebMvcConfigurer {
     }
 
     @GetMapping(value = "/")
-    public ModelAndView showForm(PersonForm personForm) {
-        return new ModelAndView("form", "personForm", new PersonForm());
+    public String showForm(PersonForm personForm) {
+        return "form";
     }
+
+//    @GetMapping(value = "/login")
+//    public String showLogin(LoginForm loginForm, Model model) {
+//        model.addAttribute("loginForm", new LoginForm());
+//        return "loginForm";
+//    }
+//
+//    @PostMapping(value = "/login")
+//    public String checkLogin(
+//            @Valid @ModelAttribute("loginForm") LoginForm user, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return "loginForm";
+//        }
+//        return "redirect:/results";
+//    }
 
     @PostMapping(value = "/")
     public String checkPersonInfo(
@@ -36,7 +54,7 @@ public class WebController implements WebMvcConfigurer {
             @RequestParam("email") String email,
             @RequestParam("password") String password,
             @RequestParam("repassword") String repeatPassword,
-            @Valid @ModelAttribute("personForm") PersonForm user, BindingResult bindingResult) {
+            @Valid PersonForm user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "form";
@@ -58,10 +76,11 @@ public class WebController implements WebMvcConfigurer {
             user.setRepassword(repeatPassword);
             boolean usr = userRepository.createAccount(user);
             if (usr) {
-                return "redirect:/results";
+                return "redirect:/loginForm";
             }
 
         }
-        return "redirect:/results";
+        return "redirect:/loginForm";
+
     }
 }

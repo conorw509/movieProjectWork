@@ -71,37 +71,43 @@
 <h1>Register</h1>
 <p>Fill in Form To Create Account</p>
 
-<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
-    <tr><h2> Name</h2>
-        <input type="text" placeholder="Enter Name" name="name" th:field="*{name}"/>
-        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
-    </tr>
-    <tr>
-        <h2>Last Name:</h2>
-        <td><input type="text" placeholder="Enter Last Name" name="lastname" th:field="*{lastname}"/></td>
-        <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</td>
-    </tr>
-    <tr>
-        <h2>Email:</h2>
-        <td><input type="text" placeholder="Enter Email" name="email" th:field=" *{email}"/></td>
-        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
-    </tr>
+<form action="#" th:action="@{/}" th:object="${personForm}" method="post" >
+    <div class="container">
+        <tr><h2> Name</h2>
+            <input type="text" placeholder="Enter Name" name="name" th:field="*{name}"/>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <h2>Last Name:</h2>
+            <td><input type="text" placeholder="Enter Last Name" name="lastname" th:field="*{lastname}"/></td>
+            <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</td>
+        </tr>
+        <tr>
+            <h2>Email:</h2>
+            <td><input type="text" placeholder="Enter Email" name="email" th:field=" *{email}"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
 
-    <tr>
-        <h2>Password:</h2>
-        <td><input type="password" placeholder="Enter Password" name="password" th:field="*{password}"/></td>
-        <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-    </tr>
-    <tr>
-        <H2>Repeat Password:</H2>
-        <td><input type="text" placeholder="Re-enter Password" name="repassword"  th:field="*{repassword}"/></td>
-        <td th:if="${#fields.hasErrors('repassword')}" th:errors="*{repassword}">RepeatPassword Error</td>
-    </tr>
-    <tr>
-        <td>
-            <button type="submit" class="registerbtn">Register</button>
-        </td>
-    </tr>
+        <tr>
+            <h2>Password:</h2>
+            <td><input type="password" placeholder="Enter Password" name="password" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+        </tr>
+        <tr>
+            <H2>Repeat Password:</H2>
+            <td><input type="text" placeholder="Re-enter Password" name="repassword" th:field="*{repassword}"/></td>
+            <td th:if="${#fields.hasErrors('repassword')}" th:errors="*{repassword}">RepeatPassword Error</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="registerbtn">Register</button>
+            </td>
+        </tr>
+    </div>
+
+    <div class="container signin">
+        <p>Already have an account? <a href="/results">Sign in</a></p>
+    </div>
 </form>
 </body>
 </html>
