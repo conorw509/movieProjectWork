@@ -2,18 +2,13 @@ package controller;
 
 import javax.validation.Valid;
 
-import Repository.userRepository;
-import model.LoginForm;
 import model.PersonForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 
 @Controller
 public class WebController implements WebMvcConfigurer {
@@ -25,27 +20,13 @@ public class WebController implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
+       // registry.addViewController("/loginForm").setViewName("loginForm");
     }
 
     @GetMapping(value = "/")
     public String showForm(PersonForm personForm) {
         return "form";
     }
-
-//    @GetMapping(value = "/login")
-//    public String showLogin(LoginForm loginForm, Model model) {
-//        model.addAttribute("loginForm", new LoginForm());
-//        return "loginForm";
-//    }
-//
-//    @PostMapping(value = "/login")
-//    public String checkLogin(
-//            @Valid @ModelAttribute("loginForm") LoginForm user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "loginForm";
-//        }
-//        return "redirect:/results";
-//    }
 
     @PostMapping(value = "/")
     public String checkPersonInfo(
@@ -75,12 +56,12 @@ public class WebController implements WebMvcConfigurer {
             user.setPassword(password);
             user.setRepassword(repeatPassword);
             boolean usr = userRepository.createAccount(user);
-            if (usr) {
-                return "redirect:/loginForm";
-            }
 
+            if (usr) {
+                return "redirect:/register";
+            }
         }
-        return "redirect:/loginForm";
+        return "redirect:/register";
 
     }
 }

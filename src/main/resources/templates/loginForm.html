@@ -1,3 +1,4 @@
+<!--<!DOCTYPE html>-->
 <!--<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml"-->
 <!--xmlns:c="http://java.sun.com/xml/ns/javaee">-->
 
@@ -70,12 +71,12 @@
 <!--</style>-->
 
 <!--</head>-->
-<!--<h1>Login</h1>-->
+
 
 
 <!--&lt;!&ndash;<c:url var="actionUrl" value="/login" />&ndash;&gt;-->
-<!--&lt;!&ndash;<form action="#" th:action="@{/}" th:object="${LoginForm}" method="post"th:commandName="login">&ndash;&gt;-->
-<!--<form:form action="${actionUrl}" modelAttribute="loginForm" acceptCharset="UTF-8" th:object="${LoginForm}" method="post">-->
+<!--<form action="#" th:action="@{http://localhost:8080/loginForm}" th:object="${LoginForm}" method="post">-->
+<!--&lt;!&ndash;<form action="${actionUrl}" modelAttribute="loginForm" acceptCharset="UTF-8" th:object="${LoginForm}" method="post">&ndash;&gt;-->
 <!--<div class="container">-->
 <!--<tr>-->
 <!--<h2>Email:</h2>-->
@@ -99,13 +100,108 @@
 <!--<p>Register<a href="/">Sign in</a></p>-->
 <!--</div>-->
 
-<!--</form:form>-->
+<!--</form>-->
 <!--</body>-->
 <!--</html>-->
 
-<html>
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
-Congratulations! new Page.
+<h1>Login</h1>
+<!--<form action="/">-->
+<form action="#" th:action="@{/LoginForm}" th:object="${loginForm}" method="post" >
+    <div class="container">
+        <tr>
+            <h2>Email:</h2>
+
+            <td><input type="text" placeholder="Enter Email" name="Email"  th:field=" *{Email}"/></td>
+            <td th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Email Error</td>
+        </tr>
+
+        <tr>
+            <h2>Password:</h2>
+
+            <td><input type="password" placeholder="Enter Password" name="Password"  th:field=" *{Password}"/></td>
+            <td th:if="${#fields.hasErrors('Password')}" th:errors="*{Password}">Password Error</td>
+        </tr>
+        <td>
+            <button type="submit" class="registerbtn">Login</button>
+        </td>
+        </tr>
+    </div>
+
+    <div class="container signin">
+        <p>Back To:<a href="/">Register</a></p>
+    </div>
+</form>
+
 </body>
 </html>
-
