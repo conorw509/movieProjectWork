@@ -58,10 +58,10 @@ public class WebController implements WebMvcConfigurer {
             boolean usr = userRepository.createAccount(user);
 
             if (usr) {
-                return "redirect:/register";
+                return "redirect:/results";
             }
         }
-        return "redirect:/register";
+        return "redirect:/results";
 
     }
 }
