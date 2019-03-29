@@ -1,7 +1,16 @@
 package model;
 
+import validators.FieldMatch;
+
 import javax.validation.constraints.*;
 
+
+//
+//@FieldMatch.List({
+// ,
+//        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+//})
+@FieldMatch(first = "repassword", second = "password", message = "The password fields must match")
 public class PersonForm {
 
     private int id;
@@ -18,6 +27,7 @@ public class PersonForm {
     @Pattern(regexp = "(.*[A-Z].*)", message = "Password must contain at Least 1 uppercase Letter")
     @Pattern(regexp = "(.*[a-z].*)", message = "Password must contain at Least 1 lowercase Letter")
     @Pattern(regexp = "(.*[0-9].*)", message = "Password must contain at Least 1 number")
+
     private String password;
     @NotEmpty
     private String repassword;

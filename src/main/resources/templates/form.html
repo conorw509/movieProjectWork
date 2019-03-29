@@ -95,7 +95,7 @@
         </tr>
         <tr>
             <H2>Repeat Password:</H2>
-            <td><input type="text" placeholder="Re-enter Password" name="repassword" th:field="*{repassword}"/></td>
+            <td><input type="password" placeholder="Re-enter Password" name="repassword" th:field="*{repassword}"/></td>
             <td th:if="${#fields.hasErrors('repassword')}" th:errors="*{repassword}">RepeatPassword Error</td>
         </tr>
         <tr>

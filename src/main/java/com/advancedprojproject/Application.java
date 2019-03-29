@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @EnableAutoConfiguration
-@ComponentScan({"controller","Repository","config"})
+@ComponentScan({"controller","Repository","config,validators"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
