@@ -23,12 +23,12 @@ public class WebController implements WebMvcConfigurer {
        // registry.addViewController("/loginForm").setViewName("loginForm");
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/reg")
     public String showForm(PersonForm personForm) {
         return "form";
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/reg")
     public String checkPersonInfo(
             @RequestParam("name") String fName,
             @RequestParam("lastname") String lName,
