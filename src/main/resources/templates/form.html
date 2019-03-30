@@ -73,7 +73,7 @@
 
 <form action="#" th:action="@{/reg}" th:object="${personForm}" method="post" >
     <div class="container">
-        <tr><h2> Name</h2>
+        <tr><h2> Name:</h2>
             <input type="text" placeholder="Enter Name" name="name" th:field="*{name}"/>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
         </tr>
@@ -81,6 +81,12 @@
             <h2>Last Name:</h2>
             <td><input type="text" placeholder="Enter Last Name" name="lastname" th:field="*{lastname}"/></td>
             <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</td>
+        </tr>
+
+        <tr>
+            <h2>Username:</h2>
+            <td><input type="text" placeholder="Enter Username" name="Username" th:field="*{Username}"/></td>
+            <td th:if="${#fields.hasErrors('Username')}" th:errors="*{Username}">Username Error</td>
         </tr>
         <tr>
             <h2>Email:</h2>

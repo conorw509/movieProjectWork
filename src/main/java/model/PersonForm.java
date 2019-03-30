@@ -20,6 +20,12 @@ public class PersonForm {
     @NotEmpty(message = "Last Name cannot Be empty")
     @Size(min = 3, max = 20, message = "Last Name must be between 3 and 20 characters")
     private String lastname;
+    @Pattern(regexp = "(.*[a-z].*)", message = "Username must contain at Least 1 lowercase Letter")
+    @Pattern(regexp = "(.*[0-9].*)", message = "Username must contain at Least 1 number")
+    @Pattern(regexp = "(.*[A-Z].*)", message = " Username must contain at Least 1 uppercase Letter")
+    @NotEmpty(message = "Last Name cannot Be empty")
+    @Size(min = 5, max = 15, message = "Username must be between 5 and 15 characters")
+    private String Username;
     @NotEmpty(message = "Email cannot Be empty")
     private String email;
     @NotEmpty(message = "Password cannot Be empty")
@@ -27,11 +33,26 @@ public class PersonForm {
     @Pattern(regexp = "(.*[A-Z].*)", message = "Password must contain at Least 1 uppercase Letter")
     @Pattern(regexp = "(.*[a-z].*)", message = "Password must contain at Least 1 lowercase Letter")
     @Pattern(regexp = "(.*[0-9].*)", message = "Password must contain at Least 1 number")
-
     private String password;
     @NotEmpty
     private String repassword;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
     public void setID(int id) {
         this.id = id;
     }

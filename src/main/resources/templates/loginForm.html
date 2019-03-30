@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -67,16 +67,17 @@
         }
     </style>
 </head>
-<body>
+<body onload='document.loginForm.username.focus();'>
 <h1>Login</h1>
-<!--<form action="/">-->
+
+<!--<form action="/">-->>
 <form action="#" th:action="@{/LoginForm}" th:object="${loginForm}" method="post" >
     <div class="container">
         <tr>
-            <h2>Email:</h2>
+            <h2>Username:</h2>
 
-            <td><input type="text" placeholder="Enter Email" name="Email"  th:field=" *{Email}"/></td>
-            <td th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Email Error</td>
+            <td><input type="text" placeholder="Enter Username" name="Username"  th:field=" *{Username}"/></td>
+            <td th:if="${#fields.hasErrors('Username')}" th:errors="*{Username}">Username Error</td>
         </tr>
 
         <tr>

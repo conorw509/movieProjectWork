@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.stereotype.Service;
 import java.sql.*;
 
@@ -16,7 +17,7 @@ public class userRepository {
     JdbcTemplate jdbcTemplate;
 
     public boolean createAccount(PersonForm u) {
-        String query = "insert into users(firstname,lastname,email,password,repassword) values(?,?,?,?,?)";
+        String query = "insert into users(firstname,lastname,Username,email,password,repassword) values(?,?,?,?,?,?)";
 
         return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
             @Override
@@ -25,9 +26,10 @@ public class userRepository {
 
                 preparedStatement.setString(1, u.getName());
                 preparedStatement.setString(2, u.getLastname());
-                preparedStatement.setString(3, u.getEmail());
-                preparedStatement.setString(4, PasswordEncrypt.encryptPassword(u.getPassword()));
-                preparedStatement.setString(5, PasswordEncrypt.encryptPassword(u.getRepassword()));
+                preparedStatement.setString(3, u.getUsername());
+                preparedStatement.setString(4, u.getEmail());
+                preparedStatement.setString(5, PasswordEncrypt.encryptPassword(u.getPassword()));
+                preparedStatement.setString(6, PasswordEncrypt.encryptPassword(u.getRepassword()));
 
                 return preparedStatement.execute();
 

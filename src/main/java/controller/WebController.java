@@ -32,9 +32,11 @@ public class WebController implements WebMvcConfigurer {
     public String checkPersonInfo(
             @RequestParam("name") String fName,
             @RequestParam("lastname") String lName,
+            @RequestParam("Username")String Username,
             @RequestParam("email") String email,
             @RequestParam("password") String password,
             @RequestParam("repassword") String repeatPassword,
+
             @Valid PersonForm user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -49,9 +51,11 @@ public class WebController implements WebMvcConfigurer {
 
                 return "form";
             }
+
             user.setID(0);
             user.setName(fName);
             user.setLastname(lName);
+            user.setUsername(Username);
             user.setEmail(email);
             user.setPassword(password);
             user.setRepassword(repeatPassword);
